@@ -14,6 +14,28 @@ namespace SkyrimPresetGenerator.Services
         // randomly select options from data
         private readonly Random random = new Random();
 
+        // All playable Skyrim races used when the user selects Random.
+        private readonly string[] races =
+        {
+            "Altmer",
+            "Argonian",
+            "Bosmer",
+            "Breton",
+            "Dunmer",
+            "Imperial",
+            "Khajiit",
+            "Nord",
+            "Orc",
+            "Redguard"
+        };
+
+        // Character sexes used when the user selects Random.
+        private readonly string[] sexes =
+        {
+            "Female",
+            "Male"
+        };
+
 
         // age ranges
         private readonly string[] ages =
@@ -26,7 +48,6 @@ namespace SkyrimPresetGenerator.Services
         };
 
 
-        // TODO: random still displays random, need actual random gen for that
         // TODO: move preset gen options into seperate class/files
         // TODO: add race specific gen data
         // TODO: facial features (face shape, eyes, etc.)
@@ -35,6 +56,19 @@ namespace SkyrimPresetGenerator.Services
         // create preset with selected race and sex
         public Preset Generate(string race, string sex)
         {
+
+            // random race
+            if (race == "Random")
+            {
+                race = races[random.Next(races.Length)];
+            }
+
+            // ransom sex
+            if (sex == "Random")
+            {
+                sex = sexes[random.Next(sexes.Length)];
+            }
+
             Preset preset = new Preset();
 
             // user selected choices
