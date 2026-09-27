@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SkyrimPresetGenerator.Data;
 using SkyrimPresetGenerator.Models;
 
 namespace SkyrimPresetGenerator.Services
@@ -13,39 +14,6 @@ namespace SkyrimPresetGenerator.Services
 
         // randomly select options from data
         private readonly Random random = new Random();
-
-        // All playable Skyrim races used when the user selects Random.
-        private readonly string[] races =
-        {
-            "Altmer",
-            "Argonian",
-            "Bosmer",
-            "Breton",
-            "Dunmer",
-            "Imperial",
-            "Khajiit",
-            "Nord",
-            "Orc",
-            "Redguard"
-        };
-
-        // Character sexes used when the user selects Random.
-        private readonly string[] sexes =
-        {
-            "Female",
-            "Male"
-        };
-
-
-        // age ranges
-        private readonly string[] ages =
-        {
-            "Very Young Adult",
-            "Young Adult",
-            "Adult",
-            "Mature Adult",
-            "Older Adult"
-        };
 
 
         // TODO: move preset gen options into seperate class/files
@@ -60,13 +28,17 @@ namespace SkyrimPresetGenerator.Services
             // random race
             if (race == "Random")
             {
-                race = races[random.Next(races.Length)];
+                race = GeneralData.Races[
+                    random.Next(GeneralData.Races.Length)
+                ];
             }
 
             // ransom sex
             if (sex == "Random")
             {
-                sex = sexes[random.Next(sexes.Length)];
+                sex = GeneralData.Sexes[
+                    random.Next(GeneralData.Sexes.Length)
+                ];
             }
 
             Preset preset = new Preset();
@@ -76,7 +48,8 @@ namespace SkyrimPresetGenerator.Services
             preset.Sex = sex;
 
             // or random
-            preset.Age = ages[random.Next(ages.Length)];
+            preset.Age = GeneralData.Ages[
+                random.Next(GeneralData.Ages.Length) ];
 
             return preset;
         }
