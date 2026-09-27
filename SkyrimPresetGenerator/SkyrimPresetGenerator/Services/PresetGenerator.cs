@@ -25,6 +25,13 @@ namespace SkyrimPresetGenerator.Services
             "Older Adult"
         };
 
+
+        // TODO: random still displays random, need actual random gen for that
+        // TODO: move preset gen options into seperate class/files
+        // TODO: add race specific gen data
+        // TODO: facial features (face shape, eyes, etc.)
+        // TODO: personality maybe?
+
         // create preset with selected race and sex
         public Preset Generate(string race, string sex)
         {
