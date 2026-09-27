@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using SkyrimPresetGenerator.Data;
+using SkyrimPresetGenerator.Data.Races;
 using SkyrimPresetGenerator.Models;
 
 namespace SkyrimPresetGenerator.Services
@@ -16,8 +17,8 @@ namespace SkyrimPresetGenerator.Services
         private readonly Random random = new Random();
 
 
-        // TODO: move preset gen options into seperate class/files
         // TODO: add race specific gen data
+        // TODO: maybe sex specific stuff?
         // TODO: facial features (face shape, eyes, etc.)
         // TODO: personality maybe?
 
@@ -48,10 +49,33 @@ namespace SkyrimPresetGenerator.Services
             preset.Sex = sex;
 
             // or random
-            preset.Age = GeneralData.Ages[
-                random.Next(GeneralData.Ages.Length) ];
+            preset.Age = GetRandom(GeneralData.Ages);
 
+
+
+
+            // .... RACE SPECIFIC STUFF ....
+
+            // dunmer specific stuff
+            if (race == "Dunmer")
+            {
+                preset.FaceShape = GetRandom(DunmerData.FaceShapes);
+                preset.Eyes = GetRandom(DunmerData.Eyes);
+                preset.Nose = GetRandom(DunmerData.Noses);
+                preset.Mouth = GetRandom(DunmerData.Mouths);
+                preset.Jaw = GetRandom(DunmerData.Jaws);
+                preset.Complexion = GetRandom(DunmerData.Complexions);
+                preset.DistinctiveFeature = GetRandom(DunmerData.DistinctiveFeatures);
+                preset.Background = GetRandom(DunmerData.Background);
+            }
+            
             return preset;
+        }
+
+        // return random item
+        private string GetRandom(string[] options)
+        {
+            return options[random.Next(options.Length)];
         }
     }
 }

@@ -43,6 +43,17 @@ namespace SkyrimPresetGenerator
             RaceResult.Text = $"Race: {preset.Race}";
             SexResult.Text = $"Sex: {preset.Sex}";
             AgeResult.Text = $"Age: {preset.Age}";
+
+            // display generated details
+            FaceShapeResult.Text = $"Face Shape: {preset.FaceShape}";
+            EyesResult.Text = $"Eyes: {preset.Eyes}";
+            NoseResult.Text = $"Nose: {preset.Nose}";
+            MouthResult.Text = $"Mouth: {preset.Mouth}";
+            JawResult.Text = $"Jaw: {preset.Jaw}";
+            ComplexionResult.Text = $"Complexion: {preset.Complexion}";
+            DistinctiveFeatureResult.Text =
+                $"Distinctive Feature: {preset.DistinctiveFeature}";
+            BackgroundResult.Text = $"Background: {preset.Background}";
         }
 
         // get text stored inside combobox

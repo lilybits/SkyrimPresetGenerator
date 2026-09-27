@@ -21,6 +21,6 @@ namespace SkyrimPresetGenerator.Models
         public string Jaw { get; set; } = "";
         public string Complexion { get; set; } = "";
         public string DistinctiveFeature { get; set; } = "";
-        public string Archetype { get; set; } = "";
+        public string Background { get; set; } = "";
     }
 }
