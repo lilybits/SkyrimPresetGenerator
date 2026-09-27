@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using SkyrimPresetGenerator.Data;
-using SkyrimPresetGenerator.Data.Races;
 using SkyrimPresetGenerator.Models;
 
 namespace SkyrimPresetGenerator.Services
@@ -17,9 +16,9 @@ namespace SkyrimPresetGenerator.Services
         private readonly Random random = new Random();
 
 
-        // TODO: add race specific gen data
         // TODO: maybe sex specific stuff?
         // TODO: facial features (face shape, eyes, etc.)
+                // TODO: Dunmer done, need to fix all other races
         // TODO: personality maybe?
 
         // create preset with selected race and sex
@@ -56,19 +55,22 @@ namespace SkyrimPresetGenerator.Services
 
             // .... RACE SPECIFIC STUFF ....
 
-            // dunmer specific stuff
-            if (race == "Dunmer")
+            // get gen data for selected race
+            RaceData? raceData = RaceDataProvider.GetRaceData(race);
+
+            // gen appearance details if data exists
+            if (raceData != null)
             {
-                preset.FaceShape = GetRandom(DunmerData.FaceShapes);
-                preset.Eyes = GetRandom(DunmerData.Eyes);
-                preset.Nose = GetRandom(DunmerData.Noses);
-                preset.Mouth = GetRandom(DunmerData.Mouths);
-                preset.Jaw = GetRandom(DunmerData.Jaws);
-                preset.Complexion = GetRandom(DunmerData.Complexions);
-                preset.DistinctiveFeature = GetRandom(DunmerData.DistinctiveFeatures);
-                preset.Background = GetRandom(DunmerData.Background);
+                preset.FaceShape = GetRandom(raceData.FaceShapes);
+                preset.Eyes = GetRandom(raceData.Eyes);
+                preset.Nose = GetRandom(raceData.Noses);
+                preset.Mouth = GetRandom(raceData.Mouths);
+                preset.Jaw = GetRandom(raceData.Jaws);
+                preset.Complexion = GetRandom(raceData.Complexions);
+                preset.DistinctiveFeature = GetRandom(raceData.DistinctiveFeatures);
+                preset.Background = GetRandom(raceData.Background);
             }
-            
+
             return preset;
         }
 

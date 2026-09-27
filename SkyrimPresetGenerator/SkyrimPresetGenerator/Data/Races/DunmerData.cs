@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SkyrimPresetGenerator.Models;
+
 namespace SkyrimPresetGenerator.Data.Races
 {
     // character options specific to Dunmer.
@@ -53,7 +55,7 @@ namespace SkyrimPresetGenerator.Data.Races
             "Medium with a soft cupid's bow"
         };
 
-        // Jaw and chin shapes.
+        // jaw
         public static readonly string[] Jaws =
         {
             "Narrow with a pointed chin",
@@ -101,6 +103,19 @@ namespace SkyrimPresetGenerator.Data.Races
             "Temple Priestess",
             "Dock Worker",
             "Merchant"
+        };
+
+        // combine all options into one object
+        public static readonly RaceData Data = new RaceData
+        {
+            FaceShapes = FaceShapes,
+            Eyes = Eyes,
+            Noses = Noses,
+            Mouths = Mouths,
+            Jaws = Jaws,
+            Complexions = Complexions,
+            DistinctiveFeatures = DistinctiveFeatures,
+            Background = Background
         };
     }
 }
